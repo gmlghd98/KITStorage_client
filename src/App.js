@@ -5,7 +5,9 @@ function App() {
     <div>
       <Header />
       <ProductList />
-      <Container />
+      <Container title="물건 1" index="1" />
+      <Container title="물건 2" index="2" />
+      <Container title="물건 3" index="3" />
     </div>
   );
 }
@@ -18,11 +20,14 @@ function ProductList() {
   return <div className="productList">KIT 재고 현황</div>;
 }
 
-function Container() {
+function Container(props) {
   return (
     <div className="container">
-      <img src="https://picsum.photos/600/150?random=1" alt="랜덤 이미지 1" />
-      <div className="product">물건</div>
+      <img
+        src={`https://picsum.photos/600/150?random=${props.index}`}
+        alt={`랜덤 이미지 ${props.index}`}
+      />
+      <div className="product">{props.title}</div>
     </div>
   );
 }
