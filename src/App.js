@@ -1,6 +1,6 @@
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div>
       <Header />
@@ -10,17 +10,17 @@ function App() {
       <Container title="물건 3" index="3" />
     </div>
   );
-}
+};
 
-function Header() {
+const Header = () => {
   return <h1>React 프로그래밍</h1>;
-}
+};
 
-function ProductList() {
+const ProductList = () => {
   return <div className="productList">KIT 재고 현황</div>;
-}
+};
 
-function Container(props) {
+const Container = (props) => {
   return (
     <div className="container">
       <img
@@ -30,6 +30,6 @@ function Container(props) {
       <div className="product">{props.title}</div>
     </div>
   );
-}
+};
 
 export default App;
