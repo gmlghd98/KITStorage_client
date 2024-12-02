@@ -4,3 +4,31 @@ h1 {
   padding: 30px;
   background-color: #a8d1d1;
 }
+
+.productList {
+  padding: 20px;
+  margin-bottom: 16px;
+  background-color: #fd8a8a;
+}
+
+.container {
+  position: relative;
+}
+
+a {
+  color: white;
+}
+
+img {
+  width: 100%;
+}
+
+.product {
+  position: absolute;
+  width: 100%;
+  color: white;
+  bottom: 5px;
+  padding: 16px 0px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
