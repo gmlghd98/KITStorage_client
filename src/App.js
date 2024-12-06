@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import Inventory from './Components/Inventory';
 import './App.css';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Paper,
+} from '@mui/material';
 
 const inventories = [
   {
@@ -35,11 +43,26 @@ const inventories = [
 class App extends Component {
   render() {
     return (
-      <div>
-        {inventories.map((inventory) => (
-          <Inventory key={inventory.id} inventory={inventory} />
-        ))}
-      </div>
+      <Paper className="root">
+        <Table className="table">
+          <TableHead>
+            <TableRow>
+              <TableCell>번호</TableCell>
+              <TableCell>이미지</TableCell>
+              <TableCell>이름</TableCell>
+              <TableCell>소유자</TableCell>
+              <TableCell>수량</TableCell>
+              <TableCell>시작 일자</TableCell>
+              <TableCell>종료 일자</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {inventories.map((inventory) => (
+              <Inventory key={inventory.id} inventory={inventory} />
+            ))}
+          </TableBody>
+        </Table>
+      </Paper>
     );
   }
 }

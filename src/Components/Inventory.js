@@ -1,49 +1,24 @@
 import React from 'react';
+import { TableRow, TableCell } from '@mui/material';
 
 class Inventory extends React.Component {
   render() {
     return (
-      <div>
-        <InventoryProfile
-          image={this.props.inventory.image}
-          name={this.props.inventory.name}
-          owner={this.props.inventory.owner}
-        />
-        <InventoryInfo
-          quantity={this.props.inventory.quantity}
-          startDate={this.props.inventory.startDate}
-          endDate={this.props.inventory.endDate}
-        />
-      </div>
-    );
-  }
-}
-
-class InventoryProfile extends React.Component {
-  render() {
-    return (
-      <div>
-        <img
-          className="inventory-profile-img"
-          src={this.props.image}
-          alt="profile"
-        />
-        <h2>
-          {this.props.name}({this.props.owner})
-        </h2>
-      </div>
-    );
-  }
-}
-
-class InventoryInfo extends React.Component {
-  render() {
-    return (
-      <div>
-        <p>{this.props.quantity}</p>
-        <p>{this.props.startDate.toLocaleDateString()}</p>
-        <p>{this.props.endDate.toLocaleDateString()}</p>
-      </div>
+      <TableRow>
+        <TableCell>{this.props.inventory.id}</TableCell>
+        <TableCell>
+          <img src={this.props.inventory.image} alt="profile" />
+        </TableCell>
+        <TableCell>{this.props.inventory.name}</TableCell>
+        <TableCell>{this.props.inventory.owner}</TableCell>
+        <TableCell>{this.props.inventory.quantity}</TableCell>
+        <TableCell>
+          {this.props.inventory.startDate.toLocaleDateString()}
+        </TableCell>
+        <TableCell>
+          {this.props.inventory.endDate.toLocaleDateString()}
+        </TableCell>
+      </TableRow>
     );
   }
 }
