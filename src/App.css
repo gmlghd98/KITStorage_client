@@ -32,3 +32,28 @@ img {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.dates {
+  padding: 20px;
+  margin-top: 0px;
+  background-color: #faf2e8;
+  color: #555555;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.product-quantity {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 0px;
+  text-align: left;
+  color: yellow;
+  filter: drop-shadow(2px 2px 4px black);
+}
+
+.inventory-profile-img {
+  width: 64px;
+  height: 64px;
+}
