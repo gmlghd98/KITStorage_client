@@ -27,22 +27,29 @@ const App = () => {
     <Paper className="root">
       <NavigationBar onMenuClick={toggleDrawer} />
       <NavigationDrawer open={isOpen} onClose={toggleDrawer} />
+      <br />
       <AddInventory />
-      <Table className="table">
+      <Table>
+        {/* className="table" */}
         <TableHead>
           <TableRow>
-            <TableCell>번호</TableCell>
-            <TableCell>이미지</TableCell>
-            <TableCell>이름</TableCell>
-            <TableCell>소유자</TableCell>
-            <TableCell>수량</TableCell>
-            <TableCell>시작 일자</TableCell>
-            <TableCell>종료 일자</TableCell>
+            <TableCell align="center">No.</TableCell>
+            <TableCell align="center">Image</TableCell>
+            <TableCell align="center">Name</TableCell>
+            <TableCell align="center">Owner</TableCell>
+            <TableCell align="center">Quantity</TableCell>
+            <TableCell align="center">Start Date</TableCell>
+            <TableCell align="center">End Date</TableCell>
+            <TableCell align="center">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {inventories.map((inventory) => (
-            <Inventory key={inventory.id} inventory={inventory} />
+          {inventories.map((inventory, index) => (
+            <Inventory
+              key={inventory.id}
+              index={index + 1}
+              inventory={inventory}
+            />
           ))}
         </TableBody>
       </Table>

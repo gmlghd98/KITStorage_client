@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import {
   Dialog,
-  DialogTitle,
   DialogContent,
+  DialogActions,
   TextField,
   Button,
   Box,
@@ -14,51 +14,69 @@ const AddInventory = () => {
   tomorrow.setDate(tomorrow.getDate() + 1);
 
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const toggleOpen = () => setOpen(true);
+  const toggleClose = () => setOpen(false);
 
   return (
-    <Box>
-      <Button variant="contained" color="primary" onClick={handleOpen}>
+    <>
+      <Button variant="contained" color="primary" onClick={toggleOpen}>
         Add Inventory
       </Button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add Inventory</DialogTitle>
-        <DialogContent className="dialogContent">
+      <Dialog open={open} onClose={toggleClose}>
+        <DialogContent
+          className="dialogContent"
+          sx={{
+            gap: 2,
+          }}
+        >
           <Button variant="contained" component="label">
-            상품 이미지 추가
+            Add Image
             <input type="file" hidden />
           </Button>
-          <br/>
           <Box
             component="form"
-            sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+            sx={{
+              display: 'flex',
+              gap: 1,
+            }}
           >
             <TextField
-              label="시작 날짜"
+              label="Start Date"
               type="date"
               name="startDate"
               defaultValue={today.toISOString().slice(0, 10)}
             />
             <TextField
-              label="종료 날짜"
+              label="End Date"
               type="date"
               name="endDate"
               defaultValue={tomorrow.toISOString().slice(0, 10)}
             />
+          </Box>
+          <Box
+            component="form"
+            sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+          >
+            <TextField fullWidth label="Product Name" type="text" name="name" />
+            <TextField fullWidth label="Owner" type="text" name="owner" />
             <TextField
               fullWidth
-              margin="normal"
-              label="상품명"
-              type="text"
-              name="name"
+              label="Quantity"
+              type="number"
+              name="quantity"
             />
-            <TextField label="소유자" type="text" name="owner" />
-            <TextField label="수량" type="number" name="quantity" />
           </Box>
         </DialogContent>
+        <DialogActions>
+          <Button onClick={toggleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={toggleClose} color="primary">
+            Submit
+          </Button>
+        </DialogActions>
       </Dialog>
-    </Box>
+    </>
   );
 };
 
