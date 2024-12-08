@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import {
   Dialog,
-  // DialogActions,
   DialogTitle,
   DialogContent,
   TextField,
@@ -19,17 +18,18 @@ const AddInventory = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <Box>
       <Button variant="contained" color="primary" onClick={handleOpen}>
-        인벤 추가하기
+        Add Inventory
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>인벤 추가</DialogTitle>
+        <DialogTitle>Add Inventory</DialogTitle>
         <DialogContent className="dialogContent">
           <Button variant="contained" component="label">
             상품 이미지 추가
             <input type="file" hidden />
           </Button>
+          <br/>
           <Box
             component="form"
             sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
@@ -57,9 +57,8 @@ const AddInventory = () => {
             <TextField label="수량" type="number" name="quantity" />
           </Box>
         </DialogContent>
-        {/* <DialogActions></DialogActions> */}
       </Dialog>
-    </div>
+    </Box>
   );
 };
 

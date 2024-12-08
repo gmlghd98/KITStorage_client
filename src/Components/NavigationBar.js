@@ -9,10 +9,10 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
-const NavigationBar = ({ onMenuClick }) => {
+const NavigationBar = (props) => {
   const [searchText, setSearchText] = useState('');
 
-  const handleSearchChange = (event) => {
+  const searchChange = (event) => {
     setSearchText(event.target.value);
   };
 
@@ -24,7 +24,7 @@ const NavigationBar = ({ onMenuClick }) => {
           edge="start"
           color="inherit"
           aria-label="menu"
-          onClick={onMenuClick}
+          onClick={props.onMenuClick}
         >
           <MenuIcon />
         </IconButton>
@@ -33,7 +33,7 @@ const NavigationBar = ({ onMenuClick }) => {
         </Typography>
         <InputBase
           value={searchText}
-          onChange={handleSearchChange}
+          onChange={searchChange}
           sx={{
             ml: 1,
             backgroundColor: 'white',

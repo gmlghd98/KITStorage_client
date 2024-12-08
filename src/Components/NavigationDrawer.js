@@ -15,20 +15,20 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-const NavigationItem = ({ text, icon }) => {
+const NavigationItem = (props) => {
   return (
     <ListItem disablePadding>
       <ListItemButton>
-        <ListItemIcon>{icon}</ListItemIcon>
-        <ListItemText primary={text} />
+        <ListItemIcon>{props.icon}</ListItemIcon>
+        <ListItemText primary={props.text} />
       </ListItemButton>
     </ListItem>
   );
 };
 
-const NavigationDrawer = ({ open, onClose }) => {
+const NavigationDrawer = (props) => {
   return (
-    <Drawer open={open} onClose={onClose}>
+    <Drawer open={props.open} onClose={props.onClose}>
       <Box sx={{ width: 250 }} role="presentation">
         <List>
           <NavigationItem text="Inbound" icon={<ArchiveIcon />} />
