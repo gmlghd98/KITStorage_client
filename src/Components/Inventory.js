@@ -6,7 +6,7 @@ const Inventory = (props) => {
     <TableRow>
       <TableCell align="center">{props.index}</TableCell>
       <TableCell align="center">
-        <img src={props.inventory.image} alt="profile" />
+        <img width={64} height={64} src={props.inventory.image} alt="profile" />
       </TableCell>
       <TableCell align="center">{props.inventory.name}</TableCell>
       <TableCell align="center">{props.inventory.owner}</TableCell>
