@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Inventory from './Components/Inventory';
 import AddInventory from './Components/AddInventory';
-import NavigationBar from './Components/NavigationBar';
+import Header from './Components/Header';
 import './App.css';
 import {
   Table,
@@ -22,11 +22,9 @@ const App = () => {
     try {
       const res = await axios.get(SERVER_URL);
       console.log(res);
-
       setInventories(res.data);
     } catch (err) {
       console.log(err);
-
       setInventories([]);
     }
   };
@@ -35,19 +33,28 @@ const App = () => {
     getInventory();
   }, []);
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
+  const handleSearch = async (keyword) => {
+    if (!keyword) {
+      getInventory();
+      return;
+    }
+    const filteredUrl = `${SERVER_URL}/user/${keyword}`;
+    try {
+      const res = await axios.get(filteredUrl);
+      console.log(res);
+      setInventories(res.data);
+    } catch (err) {
+      console.log(err);
+      setInventories([]);
+    }
   };
 
   return (
     <Paper className="root">
-      <NavigationBar onMenuClick={toggleDrawer} />
+      <Header onSearch={handleSearch} />
       <br />
       <AddInventory />
       <Table>
-        {/* className="table" */}
         <TableHead>
           <TableRow>
             <TableCell align="center">No.</TableCell>

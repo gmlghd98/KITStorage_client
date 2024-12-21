@@ -1,12 +1,9 @@
-import { useState } from 'react';
 import { AppBar, Toolbar, InputBase, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-const NavigationBar = (props) => {
-  const [searchText, setSearchText] = useState('');
-
-  const searchChange = (event) => {
-    setSearchText(event.target.value);
+const Header = ({ onSearch }) => {
+  const changeKeyword = (event) => {
+    onSearch(event.target.value);
   };
 
   return (
@@ -16,8 +13,7 @@ const NavigationBar = (props) => {
           KIT Storage
         </Typography>
         <InputBase
-          value={searchText}
-          onChange={searchChange}
+          onChange={changeKeyword}
           sx={{
             ml: 1,
             backgroundColor: 'white',
@@ -31,4 +27,4 @@ const NavigationBar = (props) => {
   );
 };
 
-export default NavigationBar;
+export default Header;

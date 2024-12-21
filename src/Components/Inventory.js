@@ -1,22 +1,23 @@
 import React from 'react';
 import { TableRow, TableCell, Button } from '@mui/material';
+import { format } from 'date-fns';
 
-const Inventory = (props) => {
+const Inventory = ({ index, inventory }) => {
   return (
     <TableRow>
-      <TableCell align="center">{props.index}</TableCell>
+      <TableCell align="center">{index}</TableCell>
       <TableCell align="center">
-        <img width={64} height={64} src={props.inventory.image} alt="profile" />
+        <img width={64} height={64} src={inventory.image} alt="profile" />
       </TableCell>
-      <TableCell align="center">{props.inventory.name}</TableCell>
-      <TableCell align="center">{props.inventory.user}</TableCell>
-      <TableCell align="center">{props.inventory.quantity}</TableCell>
-      {/* <TableCell align="center">
-        {props.inventory.startDate.toLocaleDateString()}
+      <TableCell align="center">{inventory.name}</TableCell>
+      <TableCell align="center">{inventory.user}</TableCell>
+      <TableCell align="center">{inventory.quantity}</TableCell>
+      <TableCell align="center">
+        {format(new Date(inventory.startDate), 'yyyy-MM-dd')}
       </TableCell>
       <TableCell align="center">
-        {props.inventory.endDate.toLocaleDateString()}
-      </TableCell> */}
+        {format(new Date(inventory.endDate), 'yyyy-MM-dd')}
+      </TableCell>
       <TableCell align="center">
         <Button variant="contained" color="primary">
           Edit
