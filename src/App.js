@@ -13,14 +13,12 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 
-const SERVER_URL = 'http://localhost:8080/api/inventories';
-
 const App = () => {
   const [inventories, setInventories] = useState([]);
 
   const getInventory = async () => {
     try {
-      const res = await axios.get(SERVER_URL);
+      const res = await axios.get(process.env.REACT_APP_SERVER_URL);
       console.log(res);
       setInventories(res.data);
     } catch (err) {
@@ -38,7 +36,7 @@ const App = () => {
       getInventory();
       return;
     }
-    const filteredUrl = `${SERVER_URL}/user/${keyword}`;
+    const filteredUrl = `${process.env.REACT_APP_SERVER_URL}/user/${keyword}`;
     try {
       const res = await axios.get(filteredUrl);
       console.log(res);
