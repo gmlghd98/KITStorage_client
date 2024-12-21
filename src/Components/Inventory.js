@@ -7,7 +7,7 @@ const Inventory = ({ index, inventory }) => {
     <TableRow>
       <TableCell align="center">{index}</TableCell>
       <TableCell align="center">
-        <img width={64} height={64} src={inventory.image} alt="profile" />
+        <img className="inventoryImage" src={inventory.image} alt="profile" />
       </TableCell>
       <TableCell align="center">{inventory.name}</TableCell>
       <TableCell align="center">{inventory.user}</TableCell>

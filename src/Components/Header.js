@@ -13,13 +13,9 @@ const Header = ({ onSearch }) => {
           KIT Storage
         </Typography>
         <InputBase
+          placeholder="Search User"
           onChange={changeKeyword}
-          sx={{
-            ml: 1,
-            backgroundColor: 'white',
-            borderRadius: 2,
-            border: '1px solid #ccc', // 윤곽선 추가
-          }}
+          className="searchBar"
           startAdornment={<SearchIcon />}
         />
       </Toolbar>

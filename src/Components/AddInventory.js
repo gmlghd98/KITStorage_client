@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import {
   Dialog,
+  DialogTitle,
   DialogContent,
-  DialogActions,
   TextField,
   Button,
   Box,
+  Divider,
 } from '@mui/material';
 
 const AddInventory = () => {
@@ -19,27 +20,14 @@ const AddInventory = () => {
 
   return (
     <>
-      <Button variant="contained" color="primary" onClick={toggleOpen}>
+      <Button variant="contained" onClick={toggleOpen}>
         Add Inventory
       </Button>
       <Dialog open={open} onClose={toggleClose}>
-        <DialogContent
-          className="dialogContent"
-          sx={{
-            gap: 2,
-          }}
-        >
-          <Button variant="contained" component="label">
-            Add Image
-            <input type="file" hidden />
-          </Button>
-          <Box
-            component="form"
-            sx={{
-              display: 'flex',
-              gap: 1,
-            }}
-          >
+        <DialogTitle className="dialogTitle">Inventory Form</DialogTitle>
+        <Divider />
+        <DialogContent className="dialogForm">
+          <Box>
             <TextField
               label="Start Date"
               type="date"
@@ -53,10 +41,7 @@ const AddInventory = () => {
               defaultValue={tomorrow.toISOString().slice(0, 10)}
             />
           </Box>
-          <Box
-            component="form"
-            sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
-          >
+          <Box className="dialogInputBox">
             <TextField fullWidth label="Product Name" type="text" name="name" />
             <TextField fullWidth label="Owner" type="text" name="owner" />
             <TextField
@@ -66,15 +51,15 @@ const AddInventory = () => {
               name="quantity"
             />
           </Box>
+          <Box className="dialogButtonBox">
+            <Button variant="contained" onClick={toggleClose}>
+              Cancel
+            </Button>
+            <Button variant="contained" onClick={toggleClose}>
+              Submit
+            </Button>
+          </Box>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={toggleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={toggleClose} color="primary">
-            Submit
-          </Button>
-        </DialogActions>
       </Dialog>
     </>
   );
