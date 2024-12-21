@@ -11,12 +11,12 @@ const Inventory = (props) => {
       <TableCell align="center">{props.inventory.name}</TableCell>
       <TableCell align="center">{props.inventory.user}</TableCell>
       <TableCell align="center">{props.inventory.quantity}</TableCell>
-      <TableCell align="center">
+      {/* <TableCell align="center">
         {props.inventory.startDate.toLocaleDateString()}
       </TableCell>
       <TableCell align="center">
         {props.inventory.endDate.toLocaleDateString()}
-      </TableCell>
+      </TableCell> */}
       <TableCell align="center">
         <Button variant="contained" color="primary">
           Edit

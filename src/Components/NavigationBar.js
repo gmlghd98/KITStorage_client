@@ -1,12 +1,5 @@
 import { useState } from 'react';
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  InputBase,
-  Typography,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Toolbar, InputBase, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 const NavigationBar = (props) => {
@@ -19,15 +12,6 @@ const NavigationBar = (props) => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          onClick={props.onMenuClick}
-        >
-          <MenuIcon />
-        </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           KIT Storage
         </Typography>

@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Inventory from './Components/Inventory';
 import AddInventory from './Components/AddInventory';
-import NavigationDrawer from './Components/NavigationDrawer';
 import NavigationBar from './Components/NavigationBar';
 import './App.css';
 import {
@@ -12,11 +11,30 @@ import {
   TableCell,
   Paper,
 } from '@mui/material';
-import Repository from './Repository';
+import axios from 'axios';
 
-const inventories = Repository.inventories;
+const SERVER_URL = 'http://localhost:8080/api/inventories';
 
 const App = () => {
+  const [inventories, setInventories] = useState([]);
+
+  const getInventory = async () => {
+    try {
+      const res = await axios.get(SERVER_URL);
+      console.log(res);
+
+      setInventories(res.data);
+    } catch (err) {
+      console.log(err);
+
+      setInventories([]);
+    }
+  };
+
+  useEffect(() => {
+    getInventory();
+  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -26,7 +44,6 @@ const App = () => {
   return (
     <Paper className="root">
       <NavigationBar onMenuClick={toggleDrawer} />
-      <NavigationDrawer open={isOpen} onClose={toggleDrawer} />
       <br />
       <AddInventory />
       <Table>
