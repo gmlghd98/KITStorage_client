@@ -36,7 +36,7 @@ const App = () => {
             <TableCell align="center">No.</TableCell>
             <TableCell align="center">Image</TableCell>
             <TableCell align="center">Name</TableCell>
-            <TableCell align="center">Owner</TableCell>
+            <TableCell align="center">User</TableCell>
             <TableCell align="center">Quantity</TableCell>
             <TableCell align="center">Start Date</TableCell>
             <TableCell align="center">End Date</TableCell>

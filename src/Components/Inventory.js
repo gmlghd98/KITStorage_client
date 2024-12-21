@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableRow, TableCell, Button, Box } from '@mui/material';
+import { TableRow, TableCell, Button } from '@mui/material';
 
 const Inventory = (props) => {
   return (
@@ -9,7 +9,7 @@ const Inventory = (props) => {
         <img width={64} height={64} src={props.inventory.image} alt="profile" />
       </TableCell>
       <TableCell align="center">{props.inventory.name}</TableCell>
-      <TableCell align="center">{props.inventory.owner}</TableCell>
+      <TableCell align="center">{props.inventory.user}</TableCell>
       <TableCell align="center">{props.inventory.quantity}</TableCell>
       <TableCell align="center">
         {props.inventory.startDate.toLocaleDateString()}
