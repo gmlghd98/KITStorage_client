@@ -9,6 +9,7 @@ import {
   Divider,
 } from '@mui/material';
 import axios from 'axios';
+import { format } from 'date-fns';
 
 const AddInventory = () => {
   const serverUrl = process.env.REACT_APP_SERVER_URL;
@@ -19,7 +20,7 @@ const AddInventory = () => {
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
 
-  const getFormatDate = (date) => date.toISOString().slice(0, 10);
+  const getFormatDate = (date) => format(date, 'yyyy-MM-dd');
 
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({

@@ -1,8 +1,11 @@
 import React from 'react';
-import { TableRow, TableCell, Button } from '@mui/material';
+import { TableRow, TableCell } from '@mui/material';
 import { format } from 'date-fns';
+import DeleteInventory from './DeleteInventory';
 
 const Inventory = ({ index, inventory }) => {
+  const getFormatDate = (date) => format(date, 'yyyy-MM-dd');
+
   return (
     <TableRow>
       <TableCell align="center">{index}</TableCell>
@@ -12,19 +15,10 @@ const Inventory = ({ index, inventory }) => {
       <TableCell align="center">{inventory.name}</TableCell>
       <TableCell align="center">{inventory.user}</TableCell>
       <TableCell align="center">{inventory.quantity}</TableCell>
+      <TableCell align="center">{getFormatDate(inventory.startDate)}</TableCell>
+      <TableCell align="center">{getFormatDate(inventory.endDate)}</TableCell>
       <TableCell align="center">
-        {format(new Date(inventory.startDate), 'yyyy-MM-dd')}
-      </TableCell>
-      <TableCell align="center">
-        {format(new Date(inventory.endDate), 'yyyy-MM-dd')}
-      </TableCell>
-      <TableCell align="center">
-        <Button variant="contained" color="primary">
-          Edit
-        </Button>
-        <Button sx={{ marginLeft: 1 }} variant="contained" color="primary">
-          Delete
-        </Button>
+        <DeleteInventory inventory={inventory} />
       </TableCell>
     </TableRow>
   );

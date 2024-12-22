@@ -3,6 +3,10 @@
   height: 64px;
 }
 
+.inventoryAction {
+  margin-left: 8px;
+}
+
 .dialogForm {
   display: flex;
   flex-direction: column;

@@ -2,15 +2,9 @@ import { useEffect, useState } from 'react';
 import Inventory from './Components/Inventory';
 import AddInventory from './Components/AddInventory';
 import Header from './Components/Header';
+import InventoryHeader from './Components/InventoryHeader';
 import './App.css';
-import {
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-  Paper,
-} from '@mui/material';
+import { Table, TableHead, TableBody, Paper } from '@mui/material';
 import axios from 'axios';
 
 const App = () => {
@@ -44,16 +38,7 @@ const App = () => {
       <AddInventory />
       <Table>
         <TableHead>
-          <TableRow>
-            <TableCell align="center">No.</TableCell>
-            <TableCell align="center">Image</TableCell>
-            <TableCell align="center">Name</TableCell>
-            <TableCell align="center">User</TableCell>
-            <TableCell align="center">Quantity</TableCell>
-            <TableCell align="center">Start Date</TableCell>
-            <TableCell align="center">End Date</TableCell>
-            <TableCell align="center">Action</TableCell>
-          </TableRow>
+          <InventoryHeader />
         </TableHead>
         <TableBody>
           {inventories.map((inventory, index) => (
