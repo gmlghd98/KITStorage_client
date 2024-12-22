@@ -15,41 +15,31 @@ import axios from 'axios';
 
 const App = () => {
   const [inventories, setInventories] = useState([]);
+  const [keyword, setKeyword] = useState('');
 
-  const getInventory = async () => {
+  const getInventory = async (url) => {
     try {
-      const res = await axios.get(process.env.REACT_APP_SERVER_URL);
-      console.log(res);
+      const res = await axios.get(url);
       setInventories(res.data);
     } catch (err) {
       console.log(err);
       setInventories([]);
     }
+  };
+
+  const changeKeyword = async (newKeyword) => {
+    setKeyword(newKeyword);
   };
 
   useEffect(() => {
-    getInventory();
-  }, []);
-
-  const handleSearch = async (keyword) => {
-    if (!keyword) {
-      getInventory();
-      return;
-    }
-    const filteredUrl = `${process.env.REACT_APP_SERVER_URL}/user/${keyword}`;
-    try {
-      const res = await axios.get(filteredUrl);
-      console.log(res);
-      setInventories(res.data);
-    } catch (err) {
-      console.log(err);
-      setInventories([]);
-    }
-  };
+    const serverUrl = process.env.REACT_APP_SERVER_URL;
+    const url = keyword ? `${serverUrl}/user/${keyword}` : serverUrl;
+    getInventory(url);
+  }, [keyword]);
 
   return (
     <Paper className="root">
-      <Header onSearch={handleSearch} />
+      <Header onSearch={changeKeyword} />
       <br />
       <AddInventory />
       <Table>

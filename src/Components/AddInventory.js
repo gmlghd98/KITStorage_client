@@ -11,29 +11,41 @@ import {
 import axios from 'axios';
 
 const AddInventory = () => {
+  const serverUrl = process.env.REACT_APP_SERVER_URL;
+  const noImage =
+    'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
+
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
 
+  const getFormatDate = (date) => date.toISOString().slice(0, 10);
+
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
+    image: noImage,
     name: '',
-    owner: '',
-    quantity: 0,
-    startDate: today.toISOString().slice(0, 10),
-    endDate: tomorrow.toISOString().slice(0, 10),
+    user: '',
+    quantity: 1,
+    startDate: getFormatDate(today),
+    endDate: getFormatDate(tomorrow),
   });
 
   const toggleOpen = () => setOpen(true);
   const toggleClose = () => setOpen(false);
+
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('/api/inventory', formData); // 서버 API 엔드포인트로 요청
-      console.log('Inventory added successfully:', response.data);
-      toggleClose(); // 다이얼로그 닫기
+      const response = await axios.post(serverUrl, formData);
+      console.log(response.data);
+      toggleClose();
     } catch (error) {
-      console.error('Error adding inventory:', error);
-      // 오류 처리 (예: 사용자에게 오류 메시지 표시)
+      console.error(error);
     }
   };
 
@@ -51,30 +63,56 @@ const AddInventory = () => {
               label="Start Date"
               type="date"
               name="startDate"
-              defaultValue={today.toISOString().slice(0, 10)}
+              value={formData.startDate}
+              onChange={handleInput}
             />
             <TextField
               label="End Date"
               type="date"
               name="endDate"
-              defaultValue={tomorrow.toISOString().slice(0, 10)}
+              value={formData.endDate}
+              onChange={handleInput}
             />
           </Box>
           <Box className="dialogInputBox">
-            <TextField fullWidth label="Product Name" type="text" name="name" />
-            <TextField fullWidth label="Owner" type="text" name="owner" />
+            <TextField
+              fullWidth
+              label="Image URL"
+              type="text"
+              name="image"
+              value={formData.image}
+              onChange={handleInput}
+            />
+            <TextField
+              fullWidth
+              label="Product Name"
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInput}
+            />
+            <TextField
+              fullWidth
+              label="User Name"
+              type="text"
+              name="user"
+              value={formData.user}
+              onChange={handleInput}
+            />
             <TextField
               fullWidth
               label="Quantity"
               type="number"
               name="quantity"
+              value={formData.quantity}
+              onChange={handleInput}
             />
           </Box>
           <Box className="dialogButtonBox">
             <Button variant="contained" onClick={toggleClose}>
               Cancel
             </Button>
-            <Button variant="contained" onClick={toggleClose}>
+            <Button variant="contained" onClick={handleSubmit}>
               Submit
             </Button>
           </Box>
